@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color:rgb(91, 88, 88);
+    margin: 0;
+    padding: 0;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #0022ff;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 5px;
+    text-align: center;
+}
+.logoutbtn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #ff0000;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 5px;
+    text-align: center;
+}
+.btn:hover {
+    background-color: #0056b3;
+}
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: rgb(236, 235, 235);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.text-center {
+    text-align: center;
+}
+.text-primary {
+    color: #007bff;
+}
+.text-muted {
+    color: #6c757d;
+}
+.font-weight-bold {
+    font-weight: bold;
+}
+.alert {
+    padding: 15px;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+.card {
+    margin-top: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+.card-body {
+    padding: 20px;
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.table th, .table td {
+    border: 1px solid #dee2e6;
+    padding: 10px;
+    text-align: center;
+}
+.table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+.form-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color:rgb(171, 171, 171);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+
+
+/* Style for the container of the image */
+.image-container {
+    position: relative;
+    display: inline-block;
+    overflow: visible; 
+    margin: 20px;
+    
+}
+
+/* Image hover effect */
+.hover-enlarge {
+    width: 100%;
+    max-width: 300px; /* You can set this to whatever max-width you prefer */
+    transition: transform 0.3s ease; /* Smooth transition effect */
+}
+
+.hover-enlarge:hover {
+    transform: scale(1.1); /* Enlarge the image more than its original size */
+    cursor: pointer; /* Change cursor to pointer to indicate clickable element */
+}

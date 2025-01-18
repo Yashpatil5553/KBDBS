@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Design by foolishdeveloper.com -->
+    <title>KBD Business Suite -Login Page</title>
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+<!--Stylesheet-->
+<style media="screen">
+    @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap");
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Quicksand", sans-serif;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background:rgb(71, 71, 71); /* Dark navy blue background */
+      width: 100%;
+      overflow: hidden;
+    }
+    .ring {
+      position: relative;
+      width: 500px;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .ring i {
+      position: absolute;
+      inset: 0;
+      border: 2px solid #fff;
+      transition: 0.5s;
+    }
+    .ring i:nth-child(1) {
+      border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+      animation: animate 6s linear infinite;
+    }
+    .ring i:nth-child(2) {
+      border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+      animation: animate 4s linear infinite;
+    }
+    .ring i:nth-child(3) {
+      border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+      animation: animate2 10s linear infinite;
+    }
+    .ring:hover i {
+      border: 6px solid var(--clr);
+      filter: drop-shadow(0 0 20px var(--clr));
+    }
+    @keyframes animate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes animate2 {
+      0% {
+        transform: rotate(360deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+    .login {
+      position: absolute;
+      width: 300px;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .login h2 {
+      font-size: 1em;
+      color:rgb(59, 141, 235); /* Light blue-gray */
+      text-align: center;
+    }
+    .login h1 {
+        font-size: 2em;
+        color:rgb(13, 117, 236); /* Light blue-gray */
+        text-align: center;
+      }
+    .login .inputBx {
+      position: relative;
+      width: 100%;
+    }
+    .login .inputBx input {
+      position: relative;
+      width: 100%;
+      padding: 12px 20px;
+      background: transparent;
+      border: 2px solid #a9c4eb; /* Soft blue */
+      border-radius: 40px;
+      font-size: 1.2em;
+      color: #e0e6ed; /* Light blue-gray */
+      box-shadow: none;
+      outline: none;
+      transition: 0.3s ease-in-out;
+    }
+    .login .inputBx input[type="submit"] {
+      width: 100%;
+      background: linear-gradient(45deg, #1e3a8a, #3b82f6); /* Blue gradient */
+      border: none;
+      cursor: pointer;
+    }
+    .login .inputBx input::placeholder {
+      color: rgba(224, 230, 237, 0.75); /* Lighter placeholder */
+    }
+    .login .links {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+    .login .links a {
+      color: #a9c4eb; /* Soft blue */
+      text-decoration: none;
+    }
+    
+    .login .inputBx button {
+      width: 100%;
+      padding: 12px 20px;
+      background: linear-gradient(45deg, #2563eb, #60a5fa); /* Light-to-dark blue gradient */
+      border: none;
+      border-radius: 40px;
+      font-size: 1.2em;
+      color: #fff;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: 0.3s ease-in-out; /* Smooth transition */
+      box-shadow: none; /* No shadow initially */
+    }
+    
+    .login .inputBx button:hover, 
+    .login .inputBx button:focus {
+      box-shadow: 0 0 15px #60a5fa, 0 0 40px #3b82f6; /* Glowing blue effect */
+      outline: none; /* Remove default outline */
+      transform: scale(1.05); /* Slightly enlarge the button for a dynamic effect */
+    }
+    
+    .login .inputBx input:hover, 
+    .login .inputBx input:focus {
+      border-color: #60a5fa; /* Lighter blue */
+      box-shadow: 0 0 10px #60a5fa, 0 0 40px #3b82f6; /* Glowing effect */
+      outline: none;
+    }
+    .h1{
+        color: #60a5fa;
+    }
+
+</style>
+</head>
+<body>
+<!--ring div starts here-->
+<div class="ring">
+    <i style="--clr:#2563eb;"></i> <!-- Bright blue -->
+<i style="--clr:#3b82f6;"></i> <!-- Lighter blue -->
+<i style="--clr:#60a5fa;"></i> <!-- Soft blue -->
+    <div class="login">
+        <form method="post" action="/login/">
+            {% csrf_token %}
+            <h1>KBD Business</h1>
+            <h2>Login Here</h2>
+            <div class="inputBx">
+                <label for="username">Username</label>
+                <input type="text" placeholder="Enter Username" id="username" name="username" required>
+            </div>
+            <div class="inputBx">
+                <label for="password">Password</label>
+                <input type="password" placeholder="Password" id="password" name="pass" required>
+            </div>
+            <div class="inputBx">
+                <button type="submit">Log In</button>
+            </div>
+            
+        </form>
+    </div>
+</div>
+  <!--ring div ends here-->
+
+</body>
+</html>

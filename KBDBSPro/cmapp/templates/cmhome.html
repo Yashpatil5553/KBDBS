@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block title %}
+ChangeMaster -Home
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center text-primary">ChangeMaster - Home Page</h2>
+
+    <a href="{% url 'home' %}" class="btn">Goto Home</a>
+    <a href="{% url 'update' %}" class="btn">Update Balance</a>
+    <a href="{% url 'process' %}" class="btn">Process Data</a>
+    <a href="{% url 'voucher' %}" class="btn">Generate Voucher</a>
+
+    <div class="container mt-5">
+        <h2 class="text-center text-primary">Currency State</h2>
+
+        {% if message %}
+            <div class="alert">
+                <p>{{ message }}</p>
+            </div>
+        {% else %}
+            <div class="row text-center">
+                <div>
+                    <h4 class="font-weight-bold text-muted">Available Balance:</h4>
+                    <p>{{ total_balance }}</p>
+                </div>
+                <div>
+                    <h4 class="font-weight-bold text-muted">Total Notes & Coins:</h4>
+                    <p>{{ total_notes }}</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="text-center">Denomination Breakdown</h6>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Denomination</th>
+                                {% for denomination, details in denomination_details.items %}
+                                    <th>{{ denomination }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-weight-bold">Count</td>
+                                {% for denomination, details in denomination_details.items %}
+                                    <td>{{ details.count }}</td>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td class="font-weight-bold">Total</td>
+                                {% for denomination, details in denomination_details.items %}
+                                    <td>{{ details.total }}</td>
+                                {% endfor %}
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="{% url 'update' %}" class="btn">Update</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+
+
+{% endblock %}

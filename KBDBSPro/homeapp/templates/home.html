@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+        {% block title %}
+        KBD -Home
+        {% endblock %}
+   
+        {% block content %} 
+
+        <div class="image-container">
+            <a href="{% url 'cmhome' %}">
+                <img src="{% static 'images/CMLogo.png' %}" alt="Image" class="hover-enlarge">
+            </a>     
+        </div>  
+        <div class="image-container">      
+                <a href="{% url 'cmhome' %}">
+                <img src="{% static 'images/T2PLogo.png' %}" alt="Image" class="hover-enlarge">
+            </a>
+        </div>
+        <div class="image-container">
+            <a href="{% url 'cmhome' %}">
+                <img src="{% static 'images/KRISLogo.png' %}" alt="Image" class="hover-enlarge">
+            </a>
+        </div>
+        {% endblock %}

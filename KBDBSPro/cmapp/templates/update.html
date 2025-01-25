@@ -1,106 +1,173 @@
-{% extends "layout.html" %}
-{% load static %}
-{% block title %}
-ChangeMaster -Balance Update
-{% endblock %}
-<link rel="stylesheet" type="text/css" href="{% static 'cmstyle.css' %}">
+{% extends "layout.html" %} {% load static %} {% block title %} ChangeMaster
+-Balance Update {% endblock %}
+<link rel="stylesheet" type="text/css" href="{% static 'cmstyle.css' %}" />
 {% block content %}
-<a href="{% url 'cmhome' %}" class="btn btn-primary">Goto Home</a>
+<div class="cmnavbar">
+  <a><span id="h11" >ChangeMaster</span> </a>
+  <a href="{% url 'cmhome' %}"><i class="bi bi-house"></i> CM-Home</a>
+  <a href="{% url 'update' %}" class="{% if request.resolver_match.url_name == 'update' %}activebtn{% endif %}">
+    <i class="bi bi-cash-stack"></i> Update Balance</a>
+  <a href="{% url 'process' %}"><i class="bi bi-file-earmark-spreadsheet"></i> Excel Processing</a>
+  <a href="{% url 'voucher' %}"><i class="bi bi-credit-card-2-front"></i> Generate Voucher</a>
+</div>
 <body>
-<div class="container mt-5">
+  <div class="upcontainer">
     <!-- Total Balance and Total Notes -->
     <div class="row mb-4 text-center">
-        <div class="col-md-6">
-            <h4 class="font-weight-bold text-muted">Available Balance:</h4>
-            <p class="h5">{{ total_balance }}</p>
-        </div>
-        <div class="col-md-6">
-            <h4 class="font-weight-bold text-muted">Total Notes & Coins:</h4>
-            <p class="h5">{{ total_notes }}</p>
-        </div>
+      <div class="col-md-6">
+        <h4 class="font-weight-bold text-muted">Available Balance:</h4>
+        <p class="h5">{{ total_balance }}</p>
+      </div>
+      <div class="col-md-6">
+        <h4 class="font-weight-bold text-muted">Total Notes & Coins:</h4>
+        <p class="h5">{{ total_notes }}</p>
+      </div>
     </div>
-    <div class="form-container mb-5">
-        <h3 class="text-center mb-4">Update Currency State</h3>
-        <form method="post">
-            {% csrf_token %}
-            
-            <div class="mb-3 row">
-                <label for="fivehundred" class="col-sm-4 col-form-label">500 Notes:</label>
-                <div class="col-sm-8">
-                    <input type="number" class="form-control" name="fivehundred" id="fivehundred" value="{{ currency.fivehundred }}">
-                </div>
-            </div>
+    <div class="form-container ">
+      <h3 class="text-center mb-4">UPDATE<BR>CURRENCY STATE</h3>
+      <form method="post">
+        {% csrf_token %}
 
-            <div class="mb-3 row">
-                <label for="twohundred" class="col-sm-4 col-form-label">200 Notes:</label>
-                <div class="col-sm-8">
-                    <input type="number" class="form-control" name="twohundred" id="twohundred" value="{{ currency.twohundred }}">
-                </div>
-            </div>
+        <div class="mb-3 row">
+          <label for="fivehundred" class="col-sm-4 col-form-label"
+            >₹500 Notes:</label
+          >
+          <div class="col-sm-8">
+            <input
+              type="number"
+              class="form-control"
+              name="fivehundred"
+              id="fivehundred"
+              value="{{ currency.fivehundred }}"
+            />
+          </div>
+        </div>
 
-            <div class="mb-3 row">
-                <label for="onehundred" class="col-sm-4 col-form-label">100 Notes:</label>
-                <div class="col-sm-8">
-                    <input type="number" class="form-control" name="onehundred" id="onehundred" value="{{ currency.onehundred }}">
-                </div>
-            </div>
+        <div class="mb-3 row">
+          <label for="twohundred" class="col-sm-4 col-form-label"
+            >₹200 Notes:</label
+          >
+          <div class="col-sm-8">
+            <input
+              type="number"
+              class="form-control"
+              name="twohundred"
+              id="twohundred"
+              value="{{ currency.twohundred }}"
+            />
+          </div>
+        </div>
 
-            <div class="mb-3 row">
-                <label for="fifty" class="col-sm-4 col-form-label">50 Notes:</label>
-                <div class="col-sm-8">
-                    <input type="number" class="form-control" name="fifty" id="fifty" value="{{ currency.fifty }}">
-                </div>
-            </div>
+        <div class="mb-3 row">
+          <label for="onehundred" class="col-sm-4 col-form-label"
+            >₹100 Notes:</label
+          >
+          <div class="col-sm-8">
+            <input
+              type="number"
+              class="form-control"
+              name="onehundred"
+              id="onehundred"
+              value="{{ currency.onehundred }}"
+            />
+          </div>
+        </div>
 
-            <div class="mb-3 row">
-                <label for="twenty" class="col-sm-4 col-form-label">20 Notes:</label>
-                <div class="col-sm-8">
-                    <input type="number" class="form-control" name="twenty" id="twenty" value="{{ currency.twenty }}">
-                </div>
-            </div>
+        <div class="mb-3 row">
+          <label for="fifty" class="col-sm-4 col-form-label">₹50 Notes:</label>
+          <div class="col-sm-8">
+            <input
+              type="number"
+              class="form-control"
+              name="fifty"
+              id="fifty"
+              value="{{ currency.fifty }}"
+            />
+          </div>
+        </div>
 
-            <div class="mb-3 row">
-                <label for="ten" class="col-sm-4 col-form-label">10 Notes:</label>
-                <div class="col-sm-8">
-                    <input type="number" class="form-control" name="ten" id="ten" value="{{ currency.ten }}">
-                </div>
-            </div>
+        <div class="mb-3 row">
+          <label for="twenty" class="col-sm-4 col-form-label">₹20 Notes:</label>
+          <div class="col-sm-8">
+            <input
+              type="number"
+              class="form-control"
+              name="twenty"
+              id="twenty"
+              value="{{ currency.twenty }}"
+            />
+          </div>
+        </div>
 
-            <div class="mb-3 row">
-                <label for="five" class="col-sm-4 col-form-label">5 Notes:</label>
-                <div class="col-sm-8">
-                    <input type="number" class="form-control" name="five" id="five" value="{{ currency.five }}">
-                </div>
-            </div>
+        <div class="mb-3 row">
+          <label for="ten" class="col-sm-4 col-form-label">₹10 Notes:</label>
+          <div class="col-sm-8">
+            <input
+              type="number"
+              class="form-control"
+              name="ten"
+              id="ten"
+              value="{{ currency.ten }}"
+            />
+          </div>
+        </div>
 
-            <div class="mb-3 row">
-                <label for="two" class="col-sm-4 col-form-label">2 Notes:</label>
-                <div class="col-sm-8">
-                    <input type="number" class="form-control" name="two" id="two" value="{{ currency.two }}">
-                </div>
-            </div>
+        <div class="mb-3 row">
+          <label for="five" class="col-sm-4 col-form-label">₹5 Coins:</label>
+          <div class="col-sm-8">
+            <input
+              type="number"
+              class="form-control"
+              name="five"
+              id="five"
+              value="{{ currency.five }}"
+            />
+          </div>
+        </div>
 
-            <div class="mb-3 row">
-                <label for="one" class="col-sm-4 col-form-label">1 Notes:</label>
-                <div class="col-sm-8">
-                    <input type="number" class="form-control" name="one" id="one" value="{{ currency.one }}">
-                </div>
-            </div>
+        <div class="mb-3 row">
+          <label for="two" class="col-sm-4 col-form-label">₹2 Coins:</label>
+          <div class="col-sm-8">
+            <input
+              type="number"
+              class="form-control"
+              name="two"
+              id="two"
+              value="{{ currency.two }}"
+            />
+          </div>
+        </div>
 
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">Update</button>
-            </div>
-        </form>
+        <div class="mb-3 row">
+          <label for="one" class="col-sm-4 col-form-label">₹1 Coins:</label>
+          <div class="col-sm-8">
+            <input
+              type="number"
+              class="form-control"
+              name="one"
+              id="one"
+              value="{{ currency.one }}"
+            />
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="cmbtn">Update</button>
+        </div>
+      </form>
     </div>
-            <!-- Display Success Message -->
-            {% if messages %}
-            <div class="alert alert-success">
-                {% for message in messages %}
-                    <p>{{ message }}</p>
-                {% endfor %}
-                <a href="{% url 'process' %}" class="btn btn-primary">Process ExecelSheet</a>
-            </div>
-        {% endif %}
-</div>
+    <!-- Display Success Message -->
+    {% if messages %}
+    <div class="alert alert-success">
+      {% for message in messages %}
+      <p>{{ message }}</p>
+      {% endfor %}
+      <div class="btn-center">
+      <a href="{% url 'process' %}" class="btn btn-primary">Process ExecelSheet</a>
+      </div>
+    </div>
+    {% endif %}
+  </div>
 
-{% endblock %}
+  {% endblock %}
+</body>

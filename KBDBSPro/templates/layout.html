@@ -4,9 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Load an icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
     <!-- Custom CSS -->
     <link href="{% static 'styles/style.css' %}" rel="stylesheet">
+    <link href="{% static 'styles/cm.css' %}" rel="stylesheet">
     <title>
         {% block title %}
         KBD Business- Portal
@@ -16,17 +22,26 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'home' %}">KBD Business Suite</a>
+          <a class="navbar-brand" href="{% url 'home' %}">KBD BUSINESS SUITE</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="{% url 'cmhome' %}">ChangeMaster</a>
+                <a class="nav-link {% if request.resolver_match.url_name == 'cmhome' or request.resolver_match.url_name == 'update' or request.resolver_match.url_name == 'process' or request.resolver_match.url_name == 'voucher' %}activebtn{% endif %}" aria-current="page" href="{% url 'cmhome' %}">
+                    ChangeMaster
+                </a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'KRIShome' %}">
+                  KRIS
+              </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" aria-current="page" href="{% url 'noaccess' %}">
+                  Text2Speech
+              </a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -43,11 +58,12 @@
                 <a class="nav-link disabled" aria-disabled="true">Disabled</a>
               </li>
             </ul>
-            <a href="{% url 'logout' %}" class="logoutbtn btn-primary">Logout</a>
+            <a href="{% url 'logout' %}" class="logoutbtn"><i class="bi bi-person-dash"></i> Logout</a>
           </div>
         </div>
       </nav>
-    <div class="container">
+
+    <div >
         {% block content %}
         No Content 
         {% endblock %}
@@ -55,14 +71,19 @@
     {% block footer %}
     <!-- Footer section -->
     <footer class="footer">
-      <footer class="footer text-info text-center py-1 shadow-lg mt-auto">
-        <div class="container">
-          <p class="mb-0">Developed by the KBD Business Software Department. &copy; Copyright 2025 All Rights Reserved. | For support:
-            <a href="tel:+918308665553" class="text-info">Call: +91 8308665553</a> |
-            <a href="mailto:yashpatil.kbd@gmail.com" class="text-info">Email: yashpatil.kbd@gmail.com</a>
-          </p>
-        </div>
-      </footer>
+      <div class="container">
+        <p class="mb-0">
+          Developed by KBD Business Software Department &copy; Copyright 2025 All Rights Reserved. <br> For support:
+          <!-- Contact Information -->
+          <a href="tel:+918308665553" class="contact-link">
+            <i class="bi bi-telephone-outbound-fill"></i> Call: +91 8308665553
+          </a> |
+          <a href="mailto:yashpatil.kbd@gmail.com" class="contact-link">
+            <i class="bi bi-envelope-fill"></i> Email: yashpatil.kbd@gmail.com
+          </a>
+        </p>
+      </div>
+    </footer>
     {% endblock %}
 </body>
 </html>

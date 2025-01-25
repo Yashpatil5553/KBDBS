@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% load static %} {% block title %} ChangeMaster -Home {% endblock %}
+{% block content %}
+
+<div class="cmnavbar">
+  <a><span id="h11">ChangeMaster</span> </a>
+  <a href="{% url 'cmhome' %}"><i class="bi bi-house"></i> CM-Home</a>
+  <a href="{% url 'update' %}"
+    ><i class="bi bi-cash-stack"></i> Update Balance</a
+  >
+  <a
+    href="{% url 'process' %}"
+    class="{% if request.resolver_match.url_name == 'process' %}activebtn{% endif %}"
+  >
+    <i class="bi bi-file-earmark-spreadsheet"></i> Excel Processing</a
+  >
+  <a href="{% url 'voucher' %}"
+    ><i class="bi bi-credit-card-2-front"></i> Generate Voucher</a
+  >
+</div>
+<div class="cmpostercontainer">
+<img src="{% static 'images/PosterCMSampleExcelSheet1.png' %}" alt="Poster CM SampleExcelSheet" style="width: 100%; height: auto;" />
+<a href="{% static 'files/cm_pro_sample_file.xlsx' %}" class="cmbtn" download>Download Sample Excel File</a>
+</div>
+<div class="uploadcontainer">
+    <h2>Upload Excelsheet to Process</h2>
+    <h6>Don't Forget to Update Balance</h6>
+  {% if error %}
+  <div style="color: red">{{ error.file }}</div>
+  {% endif %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %} {{ form.as_p }}
+    <button class="cmbtn" type="submit">Upload and Process</button>
+  </form>
+
+</div>
+{% endblock %}

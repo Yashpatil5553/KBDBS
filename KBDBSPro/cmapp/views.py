@@ -2,15 +2,14 @@ from django.shortcuts import render, redirect
 from .models import currencystate
 from .utils import *
 from django.contrib import messages
+from django.http import FileResponse, HttpResponse
+from .forms import UploadFileForm
+from .utils import excel_to_db
+from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from pathlib import Path
 
-
-def sheetprocess(request):
-    return render(request, 'process.html')
-
-def vouchergen(request):
-    return render(request, 'voucher.html')
-
-    
+@login_required(login_url='login')   
 def CMHome_page(request):
     bal_result = display_bal()  # Call the function to get the currency data
 
@@ -24,7 +23,7 @@ def CMHome_page(request):
         'total_notes': bal_result['total_notes']
     })
 
-
+@login_required(login_url='login') 
 def updatebalance(request):
     bal_result = display_bal()
     # Fetch the object with id=1
@@ -45,8 +44,59 @@ def updatebalance(request):
         # Save the updated object to the database
         currency.save()
         messages.success(request, 'Currency state updated successfully!')
+        bal_result = display_bal()
     
     return render(request, "update.html",{'currency': currency,
         'total_balance': bal_result['total_balance'],
         'total_notes': bal_result['total_notes']
     })  
+
+
+@login_required(login_url='login') 
+def sheetprocess(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            # Step 1: Process the uploaded file and generate the Excel file
+            uploaded_file = request.FILES['file']
+            excel_file, excel_path = excel_to_db(uploaded_file)  # This will also call export_to_excel() internally
+            
+            if excel_file is None or excel_path is None:
+                return HttpResponse("Error generating the Excel file.", status=500)
+
+            # Step 2: Send the generated Excel file as a downloadable response
+            response = HttpResponse(excel_file, content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+            response['Content-Disposition'] = f'attachment; filename={excel_path}'
+
+            return response
+    else:
+        form = UploadFileForm()
+
+    return render(request, 'process.html', {'form': form})
+
+@login_required(login_url='login') 
+def vouchergen(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            # Step 1: Process the uploaded Excel file and generate the .docx file
+            uploaded_file = request.FILES['file']
+            
+            # Pass the binary file directly to CreateVoucher
+            excel_file_bytes = uploaded_file.read()
+            docx_file, docx_filename = CreateVoucher(excel_file_bytes)
+
+            if docx_file is None or docx_filename is None:
+                return HttpResponse("Error generating the document.", status=500)
+
+            # Step 2: Send the generated .docx file as a downloadable response
+            response = HttpResponse(docx_file, content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+            response['Content-Disposition'] = f'attachment; filename={docx_filename}'
+
+            return response
+    else:
+        form = UploadFileForm()
+
+    return render(request, 'voucher.html', {'form': form})
+
+

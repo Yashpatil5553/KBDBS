@@ -20,3 +20,7 @@ class currencystate(models.Model):
     five = models.IntegerField(default=0)
     two = models.IntegerField(default=0)
     one = models.IntegerField(default=0)
+
+class UploadedFile(models.Model):
+    file = models.FileField(upload_to='uploads/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)

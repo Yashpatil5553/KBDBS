@@ -1,0 +1,124 @@
+  .cmbtn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #6e9b6a;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 5px;
+    text-align: center;
+  }
+
+  .cmbtn:hover {
+    background-color: #42b300;
+  }
+
+  .btn-center {
+    text-align: center; /* Ensures the button is centered inside its container */
+  }
+  /* Style the navigation bar */
+  .cmnavbar {
+    width: 100%;
+    background-color: #2c3e50;
+    overflow: auto;
+  }
+  
+  /* Navbar links */
+  .cmnavbar a {
+    float: left;
+    text-align: center;
+    padding: 12px;
+    color:#ecf0f1;
+    text-decoration: none;
+    font-size: 17px;
+  }
+ 
+  /* Navbar links on mouse-over */
+  .cmnavbar a:hover {
+    background-color: #3498db;
+  }
+  
+  /* Current/active navbar link */
+  .activebtn {
+    background-color: #ff6b6b;
+  }
+  
+
+
+  .cmpostercontainer {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #c0c9db;
+    border-radius: 8px;
+    
+}
+
+  .cscontainer {
+    max-width: 70%;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #6A7F9B;
+    border-radius: 8px;  
+}
+  .cscontainer:hover {
+    box-shadow: 0 0 10px 15px rgb(209, 246, 255); /* Soft glow effect */  
+  }
+  .upcontainer {
+    max-width: 70%;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #6A7F9B;
+    border-radius: 8px;  
+  }
+
+  .upcontainer:hover {
+    box-shadow: 0 0 10px 15px rgb(209, 246, 255); /* Soft glow effect */  
+  }
+  
+  .uploadcontainer {
+    max-width: 70%;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #6A7F9B;
+    border-radius: 8px;
+    display: flex; /* Enable Flexbox */
+    flex-direction: column; /* Stack child elements vertically */
+    align-items: center; /* Center child elements horizontally */
+    justify-content: center; /* Center child elements vertically */
+    height: 100%; /* Ensure it takes up full height to center vertically */
+  }
+  .uploadcontainer:hover {
+    box-shadow: 0 0 10px 15px rgb(209, 246, 255); /* Soft glow effect */  
+  }
+  
+
+  .currency-state {
+    color: #FFFFFF; /* Text color */
+    font-family: 'Roboto', sans-serif; /* Font */
+    padding: 10px; /* Space inside the element */
+    text-align: center; /* Align text to center */
+}
+
+  .cmpcontainer {
+    width: 40%;
+    margin: 30px auto;
+    padding: 50px;
+    background-color: rgb(236, 235, 235);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* display: flex;  */
+    justify-content: center; 
+    align-items: center; 
+}
+
+
+
+  /* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
+  @media screen and (max-width: 500px) {
+    .cmnavbar a {
+      float: none;
+      display: block;
+    }
+  }

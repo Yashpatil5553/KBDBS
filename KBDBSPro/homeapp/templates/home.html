@@ -1,26 +1,42 @@
-{% extends 'layout.html' %}
+{% extends 'layout.html' %} 
+{% load static %} 
+{% block title %} KBD -Home 
+{% endblock %} {% block content %}
+<div class="postercontainer">
+  <img src="{% static 'images/Poster1.png' %}" alt="Poster1 Image" style="width: 100%; height: auto;" />
+</div>
+<div class="pcontainer">
 
-{% load static %}
+  <div class="image-container">
+    <a href="{% url 'cmhome' %}">
+      <img
+        src="{% static 'images/CMLogo.png' %}"
+        alt="Image"
+        class="hover-enlarge"
+      />
+    </a>
+  </div>
 
-        {% block title %}
-        KBD -Home
-        {% endblock %}
-   
-        {% block content %} 
-
-        <div class="image-container">
-            <a href="{% url 'cmhome' %}">
-                <img src="{% static 'images/CMLogo.png' %}" alt="Image" class="hover-enlarge">
-            </a>     
-        </div>  
-        <div class="image-container">      
-                <a href="{% url 'cmhome' %}">
-                <img src="{% static 'images/T2PLogo.png' %}" alt="Image" class="hover-enlarge">
-            </a>
-        </div>
-        <div class="image-container">
-            <a href="{% url 'cmhome' %}">
-                <img src="{% static 'images/KRISLogo.png' %}" alt="Image" class="hover-enlarge">
-            </a>
-        </div>
-        {% endblock %}
+  <div class="image-container">
+    <a href="{% url 'KRIShome' %}">
+      <img
+        src="{% static 'images/KRISLogo.png' %}"
+        alt="Image"
+        class="hover-enlarge"
+      />
+    </a>
+  </div>
+  <div class="image-container">
+    <a href="{% url 'noaccess' %}">
+      <img
+        src="{% static 'images/T2PLogo.png' %}"
+        alt="Image"
+        class="hover-enlarge"
+      />
+    </a>
+  </div>
+</div>
+<div class="postercontainer">
+  <img src="{% static 'images/PosterEP.png' %}" alt="PosterEP Image" style="width: 100%; height: auto;" />
+</div>
+{% endblock %}

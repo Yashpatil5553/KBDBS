@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result - GLS-4</title>
+    <link rel="stylesheet" href="{% static 'styles/result_style.css' %}">
+</head>
+<body>
+    <div class="result-container">
+        <img src="{% static 'images/1Lto1CrLogo.png' %}" alt="GLS Logo" style="width: 100%; height: auto;" />
+        <h2>Results for {{ name }} <br>(Code: {{ code }})</h2>
+
+        <div class="result-box">
+            <h3>Registration: {{ registration|floatformat:0 }}%</h3>
+            <p>Status: <span class="{{ reg_status|lower }}">{{ reg_status }}</span></p>
+        </div>
+
+        <div class="result-box">
+            <h3>Repurchase: {{ repurchase|floatformat:0 }}</h3>
+            <p>Status: <span class="{{ rep_status|lower }}">{{ rep_status }}</span></p>
+        </div>
+
+        <div class="result-box">
+            <h3>Team Performance: {{ team_performance|floatformat:0 }}</h3>
+            <p>Status: <span class="{{ team_perf_status|lower }}">{{ team_perf_status }}</span></p>
+        </div>
+
+        <div class="result-box">
+            <h3>If Income Target {{ this_year_income|floatformat:0 }}:</h3>
+            <p>This Year Sales: {{ this_year_sales_income|floatformat:0 }}</p>
+            <p>This Year Team: {{ this_year_team_income|floatformat:0 }}</p>
+        </div>
+
+        <div class="result-box">
+            <h3>If Sales Target {{ this_year_sales|floatformat:0 }}:</h3>
+            <p>This Year Income: {{ this_year_income_sales|floatformat:0 }}</p>
+            <p>This Year Team: {{ this_year_team_sales|floatformat:0 }}</p>
+        </div>
+
+        <div class="result-box">
+            <h3>If Team Target {{ this_year_team|floatformat:0 }}:</h3>
+            <p>This Year Income: {{ this_year_income_team|floatformat:0 }}</p>
+            <p>This Year Sales: {{ this_year_sales_team|floatformat:0 }}</p>
+        </div>
+
+        <a href="{% url 'formpg' %}" class="back-btn">Go Back</a>
+    </div>
+</body>
+</html>

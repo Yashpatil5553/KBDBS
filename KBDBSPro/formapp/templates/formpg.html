@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLS-4 Target Form</title>
+    <link rel="stylesheet" href="{% static 'styles/form_style.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <img src="{% static 'images/1Lto1CrLogo.png' %}" alt="GLS Logo" style="width: 100%; height: auto;" />
+        <h2>Set Your Target for This Year</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+                <label>Name</label>
+                <input type="text" name="name" required>
+            </div>
+            <div class="input-group">
+                <label>Code</label>
+                <input type="text" name="code" required>
+            </div>
+            <div class="input-group">
+                <label>Total RPM (Registration Per Month)</label>
+                <input type="number" name="total_rpm" required>
+            </div>
+            <div class="input-group">
+                <label>Total Team</label>
+                <input type="number" name="total_team" required>
+            </div>
+            <div class="input-group">
+                <label>Year Total Sales</label>
+                <input type="number" name="year_sales" required>
+            </div>
+            <div class="input-group">
+                <label>Total Sales (Last Year)</label>
+                <input type="number" name="last_year_sales" required>
+            </div>
+            <div class="input-group">
+                <label>Total Income (Last Year)</label>
+                <input type="number" name="last_year_income" required>
+            </div>
+            <div class="input-group">
+                <label>Total Team (Last Year)</label>
+                <input type="number" name="last_year_team" required>
+            </div>
+            <div class="input-group">
+                <label>This Year Target Income (Assumed)</label>
+                <input type="number" name="this_year_income" required>
+            </div>
+            <div class="input-group">
+                <label>This Year Target Sales (Assumed)</label>
+                <input type="number" name="this_year_sales" required>
+            </div>
+            <div class="input-group">
+                <label>This Year Target Team (Assumed)</label>
+                <input type="number" name="this_year_team" required>
+            </div>
+            <button type="submit">Submit</button>
+            <a href="{% url 'index' %}" class="back-btn">Go Back</a>
+        </form>
+    </div>
+</body>
+</html>

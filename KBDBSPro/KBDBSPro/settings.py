@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'homeapp',
     'cmapp',
     'KRISapp',
+    'formapp',
 ]
 
 MIDDLEWARE = [

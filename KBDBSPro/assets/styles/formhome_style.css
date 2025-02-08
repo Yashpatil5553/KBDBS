@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+body { background: #000; color: white; overflow: hidden; }
+
+.container {
+    position: relative; width: 100vw; height: 100vh;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+}
+
+/* Particle Background */
+#particle-bg { position: absolute; width: 100%; height: 100%; z-index: -1; }
+
+/* Welcome Text */
+.welcome-text {
+    font-size: 3.5rem; font-weight: 600; backdrop-filter: blur(8px);
+    padding: 10px 20px; border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1); display: inline-block;
+    opacity: 0; animation: fadeIn 1.5s forwards;
+}
+
+.welcome-text span { color: #ffcc00; text-shadow: 0 0 10px rgba(255, 204, 0, 0.8); }
+
+.subtitle { font-size: 1.3rem; margin-top: 10px; opacity: 0; animation: fadeIn 1.5s forwards 1s; }
+
+/* Glowing Circle Button */
+.circle-btn {
+    display: flex; /* Ensures width & height are applied */
+    align-items: center; 
+    justify-content: center;
+    width: 140px; 
+    height: 140px; 
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffcc00, #ff6600); 
+    border: none;
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    color: black; 
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.9);
+    transition: 0.3s; 
+    animation: pulse 2s infinite alternate;
+}
+
+.circle-btn:hover { 
+    transform: scale(1.1); 
+    box-shadow: 0 0 25px rgba(255, 204, 0, 1); 
+}
+
+.content {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    text-align: center; /* Center text */
+}
+
+/* Animations */
+@keyframes fadeIn { 0% { opacity: 0; transform: translateY(-20px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0% { box-shadow: 0 0 15px rgba(255, 204, 0, 0.9); } 100% { box-shadow: 0 0 30px rgba(255, 204, 0, 1); } }
+
+/* Responsive */
+@media (max-width: 600px) {
+    .welcome-text { font-size: 2.5rem; }
+    .circle-btn { width: 75px; height: 75px; font-size: 1rem; }
+}

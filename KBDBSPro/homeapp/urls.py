@@ -9,4 +9,6 @@ urlpatterns = [
     path('noaccess/', views.noaccesspg, name='noaccess'),  
     path('cmapp/', include('cmapp.urls')),
     path('KRISapp/', include('KRISapp.urls')),
+    path('formapp/',include('formapp.urls')),
+
 ]

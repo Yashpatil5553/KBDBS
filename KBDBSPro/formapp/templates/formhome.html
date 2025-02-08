@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLS-4 Welcome</title>
+    <link rel="stylesheet" href="{% static 'styles/formhome_style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <canvas id="particle-bg"></canvas>
+        <div class="content">
+            <img src="{% static 'images/GLSLogo1.jpg' %}" alt="GLS Logo" style="width: 40%; height: auto;" />
+            <h1 class="welcome-text">Welcome to <span>GLS-4</span></h1>
+            <p class="subtitle">A Digital Revolution for Our Top Distributors</p>
+            <a href="{% url 'formpg' %}" class="circle-btn">Enter</a>
+        </div>
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f41313;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    padding: 15px;
+}
+
+/* Container Styling */
+.result-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(255, 204, 0, 0.5);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    margin-top: 200px;
+    margin-bottom: 50px;
+}
+
+/* Heading Styling */
+h2 {
+    color: #ffcc00;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/* Result Box */
+.result-box {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.result-box h3 {
+    color: #ffcc00;
+    font-size: 1.3rem;
+}
+
+.result-box p {
+    font-size: 1.1rem;
+}
+
+/* Color Indicators */
+.bad😞 {
+    color: red;
+}
+
+.average😐 {
+    color: orange;
+}
+
+.good🙂 {
+    color: green;
+}
+
+.awesome😃 {
+    color: cyan;
+}
+
+/* Back Button */
+.back-btn {
+    display: block;
+    background: #ffcc00;
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.back-btn:hover {
+    background: #ff6600;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .result-container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    .result-box {
+        padding: 12px;
+    }
+
+    .result-box h3 {
+        font-size: 1.2rem;
+    }
+
+    .result-box p {
+        font-size: 1rem;
+    }
+
+    .back-btn {
+        padding: 8px 12px;
+        font-size: 1rem;
+    }
+}
